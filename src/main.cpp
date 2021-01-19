@@ -5,11 +5,13 @@
 
 bool is_enable = false;
 
-void subscribeLed(std_msgs::Bool *msg, void *arg)
+void subscribeLed(std_msgs::Empty *msg, void *arg)
 {
   (void)(arg);
 
   is_enable = !is_enable;
+  //is_enable = true;
+  //M5.Lcd.print("hoge");
   //digitalWrite(LED_BUILTIN, msg->data);
 }
 
@@ -19,17 +21,20 @@ public:
   LedSub()
       : Node("ros2arduino_sub_node")
   {
-    this->createSubscriber<std_msgs::Bool>("chatter", (ros2::CallbackFunc)subscribeLed, nullptr);
+    this->createSubscriber<std_msgs::Empty>("chatter", (ros2::CallbackFunc)subscribeLed, nullptr);
   }
 };
 
 void setup()
 {
+  M5.begin();
+  M5.Lcd.println("begin");
   XRCEDDS_PORT.begin(115200);
-  while (!XRCEDDS_PORT)
-    ;
+  while (!XRCEDDS_PORT) ;
 
+  M5.Lcd.println("port");
   ros2::init(&XRCEDDS_PORT);
+  M5.Lcd.println("start");
 }
 
 void loop()
@@ -44,4 +49,5 @@ void loop()
   }
 
   ros2::spin(&LedNode);
+  //delay(500);
 }
