@@ -67,19 +67,20 @@ void loop()
   static LedSub LedNode;
 
   M5.Lcd.setCursor(10, 100);
+  //M5.Lcd.printf("state: %d", state);
   switch(state) {
     case STATE_GOAHEAD:
-      break;
       M5.Lcd.print("state: f");
+      break;
     case STATE_BACKOFF:
-      break;
       M5.Lcd.print("state: b");
+      break;
     case STATE_TURNRIGHT:
-      break;
       M5.Lcd.print("state: r");
-    case STATE_TURNLEFT:
       break;
+    case STATE_TURNLEFT:
       M5.Lcd.print("state: l");
+      break;
     case STATE_STOP:
     default:
       M5.Lcd.print("state: s");
