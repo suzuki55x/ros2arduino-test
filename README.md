@@ -11,7 +11,7 @@
 ### RaspberryPi 4
 
 1. ROS2 dashingをインストール
-2. aptにて、ros-dashing-bridge-suiteをインストール
+2. aptにて、ros-dashing-rosbridge-suiteをインストール
 3. [こちら](https://micro-xrce-dds.docs.eprosima.com/en/latest/installation.html)を参考に、MicroXRCEDDS-Agentをインストール (`git checkout v1.1.0`をわすれないこと)
 
 ## usage
